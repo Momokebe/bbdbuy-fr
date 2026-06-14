@@ -22,19 +22,17 @@ client.on('messageCreate', async (message) => {
             .setTitle('📋 FAQ')
             .setDescription('Cliquez sur une catégorie ci-dessous pour voir la réponse associée.');
 
-        const row1 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder().setCustomId('faq_commander').setLabel('Comment commander').setEmoji('🛍️').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq_liens').setLabel('Liens').setEmoji('🔗').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq_spreadsheet').setLabel('Spreadsheet').setEmoji('🛒').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq_colis').setLabel('Colis d\'essai').setEmoji('⚖️').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq_ligne').setLabel('Meilleure ligne').setEmoji('🚛').setStyle(ButtonStyle.Primary)
-            );
+        const row1 = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setCustomId('faq_commander').setLabel('Comment commander').setEmoji('🛍️').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq_liens').setLabel('Liens').setEmoji('🔗').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq_spreadsheet').setLabel('Spreadsheet').setEmoji('🛒').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq_colis').setLabel('Colis d\'essai').setEmoji('⚖️').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq_ligne').setLabel('Meilleure ligne').setEmoji('🚛').setStyle(ButtonStyle.Primary)
+        );
 
-        const row2 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder().setCustomId('faq_assurance').setLabel('Assurance').setEmoji('📋').setStyle(ButtonStyle.Primary)
-            );
+        const row2 = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setCustomId('faq_assurance').setLabel('Assurance').setEmoji('📋').setStyle(ButtonStyle.Primary)
+        );
 
         await message.channel.send({ embeds: [faqEmbed], components: [row1, row2] });
         await message.delete();
@@ -46,22 +44,20 @@ client.on('messageCreate', async (message) => {
             .setTitle('📋 FAQ')
             .setDescription('Cliquez sur une catégorie ci-dessous pour voir la réponse associée.');
 
-        const row1 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder().setCustomId('faq2_processus').setLabel('Le processus').setEmoji('🔄').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_qualite').setLabel('Qualité article').setEmoji('🔎').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_commander').setLabel('Commander').setEmoji('🛍️').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_balance').setLabel('Balance').setEmoji('💰').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_etapes').setLabel('Étapes commande').setEmoji('📋').setStyle(ButtonStyle.Primary)
-            );
+        const row1 = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setCustomId('faq2_processus').setLabel('Le processus').setEmoji('🔄').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_qualite').setLabel('Qualité article').setEmoji('🔎').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_commander').setLabel('Commander').setEmoji('🛍️').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_balance').setLabel('Balance').setEmoji('💰').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_etapes').setLabel('Étapes commande').setEmoji('📋').setStyle(ButtonStyle.Primary)
+        );
 
-        const row2 = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder().setCustomId('faq2_preparation').setLabel('Préparation colis').setEmoji('🎁').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_suivi').setLabel('Suivi colis').setEmoji('🚚').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_reception').setLabel('Réception colis').setEmoji('📦').setStyle(ButtonStyle.Primary),
-                new ButtonBuilder().setCustomId('faq2_saisie').setLabel('Saisi - Perte - Vol').setEmoji('⚠️').setStyle(ButtonStyle.Danger)
-            );
+        const row2 = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setCustomId('faq2_preparation').setLabel('Préparation colis').setEmoji('🎁').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_suivi').setLabel('Suivi colis').setEmoji('🚚').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_reception').setLabel('Réception colis').setEmoji('📦').setStyle(ButtonStyle.Primary),
+            new ButtonBuilder().setCustomId('faq2_saisie').setLabel('Saisi - Perte - Vol').setEmoji('⚠️').setStyle(ButtonStyle.Danger)
+        );
 
         await message.channel.send({ embeds: [faq2Embed], components: [row1, row2] });
         await message.delete();
@@ -74,6 +70,7 @@ client.on('interactionCreate', async (interaction) => {
     let texteReponse = '';
 
     switch (interaction.customId) {
+
         case 'faq_assurance':
             texteReponse = `📋 **Assurance :** L'assurance payante (bbdbuy Care) est une option très abordable puisqu'elle coûte seulement environ 3% à 5% de la valeur totale de votre colis (ce qui représente à peine 3€ à 5€ pour une commande de 100€). Elle est particulièrement recommandée si c'est votre première commande et que vous souhaitez commander l'esprit tranquille.\n\nEn cas de problème majeur durant le transport—que ce soit une perte définitive de votre colis par le livreur ou une saisie à la douane (même si cela reste extrêmement rare)—l'assurance prend tout en charge. Elle vous remboursera 100% de la valeur de vos articles ainsi que l'intégralité des frais de port pour que vous soyez totalement serein.`;
             break;
@@ -83,7 +80,7 @@ client.on('interactionCreate', async (interaction) => {
             break;
 
         case 'faq_colis':
-            texteReponse = `⚖️ **C'est quoi le "colis d'essai" (la pré-pesée) et pourquoi l'utiliser ?**\n\nBienvenue ! Quand tu achètes tes articles, le site fait une estimation automatique du poids et de la taille du carton. Parfois, cette estimation est un peu plus lourde que la réalité, ce qui te force à payer des frais de port plus chers au moment de valider (même si le site te rembourse la différence sur ton solde quelques jours plus tard).\n\nPour éviter d'avancer cet argent pour rien, tu peux demander un **Rehearsal** (une simulation d'emballage) :\n1️⃣ Les agents de l'entrepôt vont prendre tes articles et emballer réellement ton colis exactement comme s'il partait pour de bon.\n2️⃣ Ils vont le peser sur la balance et mesurer le carton au centimètre près.\n3️⃣ Le site met à jour ta commande avec le poids et le prix de livraison exacts et définitifs.\n\n🌟 **Pourquoi c'est top pour toi ?**\n* **Pas de surprise :** Tu payes le juste prix immédiatement, sans devoir attendre un remboursement.\n* **Le choix de la ligne :** Ça te permet de vérifier à l'avance si ton colis passe sous la limite de la ligne que tu voulais (par exemple, vérifier que ton colis fait bien moins de 5 kg pour pouvoir prendre la ligne Colissi). Si c'est trop lourd, tu peux ajuster en enlevant une boîte de chaussures par exemple, avant de payer !\n\nC'est une option qui coûte trois fois rien (environ 2-3 €) et ça te permet d'expédier ton tout premier colis l'esprit tranquille.`;
+            texteReponse = `⚖️ **C'est quoi le "colis d'essai" (la pré-pesée) et pourquoi l'utiliser ?**\n\nBienvenue ! Quand tu achètes tes articles, le site fait une estimation automatique du poids et de la taille du carton. Parfois, cette estimation est un peu plus lourde que la réalité, ce qui te force à payer des frais de port plus chers au moment de valider (même si le site te rembourse la différence sur ton solde quelques jours plus tard).\n\nPour éviter d'avancer cet argent pour rien, tu peux demander un **Rehearsal** (une simulation d'emballage) :\n1️⃣ Les agents de l'entrepôt vont prendre tes articles et emballer réellement ton colis exactement comme s'il partait pour de bon.\n2️⃣ Ils vont le peser sur la balance et mesurer le carton au centimètre près.\n3️⃣ Le site met à jour ta commande avec le poids et le prix de livraison exacts et définitifs.\n\n🌟 **Pourquoi c'est top pour toi ?**\n* **Pas de surprise :** Tu payes le juste prix immédiatement, sans devoir attendre un remboursement.\n* **Le choix de la ligne :** Ça te permet de vérifier à l'avance si ton colis passe sous la limite de la ligne que tu voulais. Si c'est trop lourd, tu peux ajuster avant de payer !\n\nC'est une option qui coûte trois fois rien (environ 2-3 €) et ça te permet d'expédier ton tout premier colis l'esprit tranquille.`;
             break;
 
         case 'faq_commander':
