@@ -116,7 +116,7 @@ Ton article est prêt à partir ? C'est le moment d'utiliser ton coupon ! Note q
             texteReponse = `🔎 **Comment juger la qualité d'un article ?**
 
 ⭐ **Évaluer un vendeur avant d'acheter**
-Tu veux savoir si un vendeur est fiable avant de passer commande ? Colle le lien de ton article (**Taobao / Weidian / 1688**) directement dans ce salon → https://discord.com/channels/1493015399262978219/1493022170790629406 et la communauté t'aidera à juger ! 🙌
+Tu veux savoir si un vendeur est fiable avant de passer commande ? Colle le lien de ton article (**Taobao / Weidian / 1688**) directement dans ce salon → https://discord.com/channels/1493015399262978219/1515407091433472172 et la communauté t'aidera à juger ! 🙌
 
 📸 **Partager ton contrôle qualité (QC)**
 Tu as reçu tes photos de contrôle qualité de BBDBuy ? Partage-les avec la communauté dans le salon dédié → https://discord.com/channels/1493015399262978219/1515361848315351180
@@ -271,10 +271,8 @@ Contacte le **service client** dès la prise en charge pour :
         .setColor(0xED810E)
         .setDescription(texteReponse);
 
-    await interaction.reply({
-        embeds: [reponseEmbed],
-        ephemeral: true
-    });
+    await interaction.deferReply({ ephemeral: true });
+    await interaction.editReply({ embeds: [reponseEmbed] });
 });
 
 client.login(process.env.DISCORD_TOKEN);
